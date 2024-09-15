@@ -1,4 +1,4 @@
-import users from './db.mjs';
+import users from "./db.mjs"
 
 const createRow = (userData) => {
   const table = document.querySelector('.table');

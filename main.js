@@ -1,13 +1,17 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('node:path');
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
-    height: 800
+    height: 800,
+    webPreferences: {
+      preload: path.join(__dirname, 'src/preload.js')
+    }
   })
 
   win.loadFile('index.html')
-  // win.webContents.openDevTools() - открывает инструменты разработчика в приложении
+  win.webContents.openDevTools() // открывает инструменты разработчика в приложении
 }
 
 
