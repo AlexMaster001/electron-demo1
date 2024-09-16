@@ -1,7 +1,8 @@
 import users from "./db.mjs"
 
+const table = document.querySelector('.table');
+
 const createRow = (userData) => {
-  const table = document.querySelector('.table');
   const tr = document.createElement('tr');
   const { name, email, age, phone } = userData;
   [name, email, age, phone].forEach((data) => {
@@ -9,7 +10,17 @@ const createRow = (userData) => {
     td.textContent = data;
     tr.appendChild(td);
   })
-  table.appendChild(tr)
+  table.appendChild(tr);
+  return tr;
 }
 
-users.forEach((user) => createRow(user));
+const renderTable = () => {
+  const fragment = document.createDocumentFragment(); // оптимизируем работу с DOM, вставляя элементы единожды, а не на каждой итерации
+
+  users.forEach((user) => {
+    fragment.appendChild(createRow(user));
+  });
+  table.appendChild(fragment);
+}
+
+renderTable();
