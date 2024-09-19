@@ -14,13 +14,13 @@ const createWindow = () => {
   win.webContents.openDevTools() // открывает инструменты разработчика в приложении
 
   ipcMain.on('open-new-table', (event, table) => {
-    console.log('open');
     const win = new BrowserWindow({
-      width: 200,
-      height: 200,
+      width: 500,
+      height: 500,
     });
   
-    win.loadFile('test.html')
+    win.loadFile('products.html')
+    win.webContents.openDevTools()
   })
 }
 

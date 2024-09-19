@@ -1,6 +1,6 @@
-import users from "./db.mjs"
+import { users } from "./db.mjs"
 
-const table = document.querySelector('.table');
+const usersTable = document.querySelector('.table');
 
 const createRow = (userData) => {
   const tr = document.createElement('tr');
@@ -10,11 +10,11 @@ const createRow = (userData) => {
     td.textContent = data;
     tr.appendChild(td);
   })
-  table.appendChild(tr);
+  usersTable.appendChild(tr);
   return tr;
 }
 
-const renderTable = () => {
+const renderTable = (table) => {
   const fragment = document.createDocumentFragment(); // оптимизируем работу с DOM, вставляя элементы единожды, а не на каждой итерации
 
   users.forEach((user) => {
@@ -23,4 +23,13 @@ const renderTable = () => {
   table.appendChild(fragment);
 }
 
-renderTable();
+renderTable(usersTable);
+
+const information = document.getElementById('info')
+information.innerText = `This app is using Chrome (v${window.versions.chrome()}), Node.js (v${window.versions.node()}), and Electron (v${window.versions.electron()})`
+
+const setButton = document.getElementById('btn')
+setButton.addEventListener('click', () => {
+  const table = 'goods'
+  window.electronAPI.openNewTable(table)
+})
