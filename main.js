@@ -19,7 +19,7 @@ const createWindow = () => {
       height: 500,
     });
   
-    win.loadFile('products.html')
+    win.loadFile('user.html')
     win.webContents.openDevTools()
   })
 }
