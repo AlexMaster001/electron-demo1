@@ -30,4 +30,4 @@ const users = [
   { "id": 29, "name": "Emily Davis", "age": 30, "username": "emily.davis", "email": "emily.davis@example.com", "address": { "street": "789 Maple Lane", "city": "Townsville", "zip": "54321" }, "phone": "555-890-1234", "website": "www.emilydavis.com", "occupation": "Graphic Designer", "hobbies": ["Drawing", "Hiking"] },
   { "id": 30, "name": "Lucas Smith", "age": 31, "username": "lucassmith", "email": "lucas.smith@example.com", "address": { "street": "789 Oak Lane", "city": "Villageland", "zip": "67890" }, "phone": "555-901-2345", "website": "www.lucassmith.com", "occupation": "Software Engineer", "hobbies": ["Gaming", "Photography"] }];
 
-export { users, products };
+export { users };

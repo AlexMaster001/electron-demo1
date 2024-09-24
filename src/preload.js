@@ -7,7 +7,9 @@ contextBridge.exposeInMainWorld('versions', {
   electron: () => process.versions.electron
 })
 
-contextBridge.exposeInMainWorld('electronAPI', {
-  openNewTable: (table) => ipcRenderer.send('open-new-table', table)
+contextBridge.exposeInMainWorld('myAPI', {
+  openNewTable: (table) => ipcRenderer.send('open-new-table', table),
+  parseCSV: () => ipcRenderer.invoke('parseCSV'),
+  writeCSV: () => ipcRenderer.invoke('writeCSV')
 })
 
