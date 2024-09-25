@@ -4,14 +4,11 @@ const fs = require('fs');
 
 ipcMain.handle('parseCSV', () => {
   const data = fs.readFileSync('./src/users.csv', 'utf-8');
-  return data.split('\n').map((row) => row.split(','))
-}
-)
-ipcMain.handle('writeCSV', () => {
-  const data = fs.readFileSync('./src/users.csv', 'utf-8');
-  fs.writeFileSync('./src/users.csv', data + '\n' + '12,23', 'utf-8')
-}
-)
+  return data.split('\n').map((row) => row.split(','))})
+
+ipcMain.on('writeCSV', (e, data) => {
+  const oldData = fs.readFileSync('./src/users.csv', 'utf-8');
+  fs.writeFileSync('./src/users.csv', `${oldData}${data}\n`, 'utf-8')})
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -27,7 +24,7 @@ const createWindow = () => {
 
   ipcMain.on('open-new-table', (event, table) => {
     const win = new BrowserWindow({
-      width: 500,
+      width: 800,
       height: 500,
       webPreferences: {
         preload: path.join(__dirname, 'src/preload.js')

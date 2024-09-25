@@ -24,8 +24,9 @@ const renderTable = async (table) => {
 
 renderTable(usersTable);
 
-const setButton = document.getElementById('btn')
-setButton.addEventListener('click', async () => {
-  await window.myAPI.writeCSV();
-  renderTable(usersTable);
+const createUserButton = document.querySelector('.createUser')
+createUserButton.addEventListener('click', async () => {
+  await window.myAPI.openNewTable()
+  // await window.myAPI.writeCSV();
+  // renderTable(usersTable);
 })

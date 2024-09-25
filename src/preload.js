@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld('versions', {
 
 contextBridge.exposeInMainWorld('myAPI', {
   openNewTable: (table) => ipcRenderer.send('open-new-table', table),
-  parseCSV: () => ipcRenderer.invoke('parseCSV'),
-  writeCSV: () => ipcRenderer.invoke('writeCSV')
+  writeCSV: (data) => ipcRenderer.send('writeCSV', data),
+  parseCSV: () => ipcRenderer.invoke('parseCSV')
 })
 
